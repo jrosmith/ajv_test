@@ -1,6 +1,6 @@
 var Ajv = require('ajv');
 var ajv = new Ajv();
-require('ajv-keywords')(ajv)
+require('ajv-keywords')(ajv, ['if'])
 
 var index = require('./schemas/index.js');
 
@@ -27,5 +27,5 @@ var objToValidate = {
 // Replace with adminCommand2 and note that the validation successfully fails
 console.log(
   "Object is valid:",
-  ajv.validate('adminCommand1', objToValidate)
+  ajv.validate('adminCommand2', objToValidate)
 )
