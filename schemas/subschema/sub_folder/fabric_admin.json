@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "adminUserSchema",
+  "title": "adminUser",
+
+  "type": "object",
+  "required": ["username", "secret", "enrollId", "enrollSecret", "registrar"],
+
+  "properties": {
+    "username": { "type": "string" },
+    "secret": { "type": "string" },
+    "enrollId": { "type": "string" },
+    "enrollSecret": { "type": "string" },
+
+    "registrar": {
+      "type": "object",
+      "maxProperties": 1,
+      "required": ["roles"],
+
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "userSchema",
+  "title": "user",
+
+  "type": "object",
+  "required": ["username", "secret", "usertype", "roles", "attributes"],
+
+  "properties": {
+    "username": { "type": "string" },
+    "secret": { "type": "string" },
+    "usertype": { "type": "number" },
+    "roles": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "value"],
+        "additionalProperties":{
+          "name": { "type": "string" },
+          "value": { "type": "string" }
+        }
+      }
+    }
+  }
+}

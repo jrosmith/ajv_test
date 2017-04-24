@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "adminCommadSchema1",
+  "title": "adminCommand1",
+
+  "type": "object",
+  "required": ["cmd", "details"],
+  "properties": {
+    "cmd": {
+      "type": "string"
+    },
+
+    "details": { "type": "object" }
+  },
+
+  "oneOF":[
+      {
+        "if": {
+          "properties": {
+            "cmd": { "const": "registerAdmin" }
+          }
+        },
+        "then": {
+          "properties": {
+            "details" : { "$ref": "adminUserSchema" }
+          }
+        },
+        "else": false
+      },
+
+      {
+        "if": {
+          "properties": {
+            "cmd": {
+              "enum": ["enrollUser", "registerAndEnrollUser", "registerUser"]
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "details": { "$ref": "userSchema" }
+          }
+        },
+        "else": false
+      }
+    ]
+}
