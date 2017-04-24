@@ -25,4 +25,7 @@ var objToValidate = {
 }
 
 // Replace with adminCommand2 and note that the validation successfully fails
-console.log( ajv.validate('adminCommand1', objToValidate) )
+console.log(
+  "Object is valid:",
+  ajv.validate('adminCommand1', objToValidate)
+)
